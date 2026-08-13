@@ -7,31 +7,48 @@ This document tracks the active development phases, completed architecture, curr
 
 | Phase | Core Objective | Key Deliverables | Status | Timeline |
 | :--- | :--- | :--- | :---: | :---: |
-| **Phase 1: Foundation** | Infrastructure Setup | Core domain model, database schema, base API structure | 🟢 Completed | Q1 |
-| **Phase 2: Core Platform** | Essential Workflows | Primary business logic, user auth, main client interface | 🟡 In Progress | Current |
+| **Phase 1: Foundation** | Infrastructure Setup | Core domain model, database schema, base API structure | 🔴 Not Started | Current |
+| **Phase 2: Core Platform** | Essential Workflows | Primary business logic, user auth, main client interface | 🔵 Planned | Next |
 | **Phase 3: Integration** | Ecosystem Connections | External API integrations, automated background sync, reporting | 🔵 Planned | Next Sprint |
 | **Phase 4: Optimization** | Scale & Polish | Performance tuning, advanced analytics, audit logging | 🔵 Backlog | Future |
 
 ---
 
-## Detailed Phase Breakdown
+## Sprint 1 — Guest UI Shell (In Progress)
+**Goal:** A Vercel-deployed, mobile-first guest experience ready for iPad demo. All data is static — no backend, no AI API, no Twilio this sprint.
 
-### Phase 1: Foundation & Core Setup 🟢
-**Goal:** Establish project repository, core backend architecture, and foundational UI framework.
-
-* **Database & Schema:** Defined initial data models and relational migrations.
-* **Authentication & Authorization:** Implemented session/JWT management and role-based access control.
-* **API Framework:** Built base REST/GraphQL service endpoints and error-handling middleware.
+| Issue | Story | Points |
+| :--- | :--- | :---: |
+| [#1](https://github.com/uzat/charteris/issues/1) | CHR-01: Project Foundation & Vercel Deployment | 2 |
+| [#2](https://github.com/uzat/charteris/issues/2) | CHR-02: Core Guest Page Layout | 2 |
+| [#3](https://github.com/uzat/charteris/issues/3) | CHR-03: Quiet Hours Compliance Banner | 3 |
+| [#4](https://github.com/uzat/charteris/issues/4) | CHR-04: Guest Session Onboarding — Booking Type Capture | 3 |
+| [#5](https://github.com/uzat/charteris/issues/5) | CHR-05: Curated Experience Grid | 5 |
+| [#6](https://github.com/uzat/charteris/issues/6) | CHR-06: House Manual Collapsible Panels | 2 |
+| [#7](https://github.com/uzat/charteris/issues/7) | CHR-07: AI Concierge Search Bar (UI Only) | 3 |
+| | **Total** | **20** |
 
 ---
 
-### Phase 2: Core Workflows & Feature Set 🟡
+## Detailed Phase Breakdown
+
+### Phase 1: Foundation & Core Setup 🔴
+**Goal:** Establish project repository, core backend architecture, and foundational UI framework.
+
+* **Database & Schema:** Define data models and Supabase schema (properties, experiences, bookings, compliance logs).
+* **Authentication & Authorization:** Session management and role-based access (agency admin vs guest).
+* **API Framework:** Next.js API routes for property config, experience availability, compliance logging.
+
+---
+
+### Phase 2: Core Workflows & Feature Set 🔵
 **Goal:** Deliver end-to-end functionality for primary Charteris user journeys.
 
-* **Active Sprints:**
-* Complete core UI views and client-side state management.
-* Implement primary transactional workflows and data entry panels.
-* Standardize client-server type safety and validation schemas.
+* **Planned Features:**
+* Replace static demo data with live Supabase property configs.
+* RAG-based AI Concierge (Claude API) against house manual content.
+* Twilio SMS quiet-hour nudges.
+* Multi-property support keyed by URL slug/QR code.
 
 ---
 
@@ -39,14 +56,12 @@ This document tracks the active development phases, completed architecture, curr
 **Goal:** Expand Charteris capabilities with third-party tools and automated background processing.
 
 * **Planned Features:**
-* External API connectors and data sync pipelines.
-* Real-time notifications and activity feeds.
-* Automated job scheduling for recurring tasks.
-* **Stripe Integration (Sandbox → Production):**
-  * Recurring SaaS billing — $69 AUD/month per property via Stripe Subscriptions.
-  * Webhook handlers for subscription lifecycle events (created, cancelled, past-due).
-  * Agency billing portal via Stripe Customer Portal.
-  * Note: Experience bookings handled via FareHarbor/Rezdy affiliate URLs — Stripe not required for guest-side transactions.
+* FareHarbor/Rezdy availability API — real-time experience availability.
+* Stripe Subscriptions — $69 AUD/month per property recurring billing.
+* Stripe webhook handlers for subscription lifecycle (created, cancelled, past-due).
+* Agency billing portal via Stripe Customer Portal.
+* Automated job scheduling for compliance log reports.
+* Note: Experience bookings handled via FareHarbor/Rezdy affiliate URLs — Stripe not required for guest-side transactions.
 
 ---
 
@@ -54,13 +69,13 @@ This document tracks the active development phases, completed architecture, curr
 **Goal:** Prepare platform for scale, security audits, and deep operational insight.
 
 * **Planned Features:**
-* Advanced reporting and dashboard metrics.
+* Advanced reporting and dashboard metrics for agencies.
 * Comprehensive audit logging and compliance tracking.
-* Query optimization, caching layer, and load testing.
+* Query optimisation, caching layer, and load testing.
 
 ---
 
 ## Next Immediate Steps
-1. Finalize open Phase 2 frontend views and API route connections.
-2. Complete end-to-end testing for core user workflows.
-3. Establish Phase 3 integration specifications.
+1. Complete Sprint 1 — guest UI shell deployed to Vercel, iPad demo-ready.
+2. Begin Phase 1 foundation — Supabase schema, property config API.
+3. Sprint 2 — wire live data, AI concierge, Twilio.
