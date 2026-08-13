@@ -5,6 +5,7 @@ import Footer from '../../../components/layout/Footer';
 import QuietHoursBanner from '../../../components/features/quiet-hours/QuietHoursBanner';
 import GuestSessionProvider from '../../../components/features/onboarding/GuestSessionProvider';
 import ExperienceGrid from '../../../components/features/experiences/ExperienceGrid';
+import HouseManual from '../../../components/features/house-manual/HouseManual';
 
 interface PageProps {
   params: { slug: string };
@@ -28,7 +29,7 @@ export default function StayPage({ params }: PageProps) {
               experiences={config.experiences}
               bookingType={bookingType}
             />
-            {/* CHR-06: HouseManual */}
+            <HouseManual sections={config.houseManual} />
           </main>
         )}
       </GuestSessionProvider>
