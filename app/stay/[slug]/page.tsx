@@ -1,5 +1,7 @@
 import { notFound } from 'next/navigation';
 import { getPropertyConfig } from '../../../lib/config/demo-property';
+import Header from '../../../components/layout/Header';
+import Footer from '../../../components/layout/Footer';
 
 interface PageProps {
   params: { slug: string };
@@ -12,25 +14,16 @@ export default function StayPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-navy">
-      <header className="sticky top-0 z-50 bg-navy border-b border-sand/10">
-        <div className="mx-auto max-w-[960px] px-4 py-4 flex items-center justify-between">
-          <span className="font-sans font-bold text-sm tracking-widest text-sand/80 uppercase">
-            Charteris
-          </span>
-          <span className="text-xs text-sand/50">{config.branding.propertyName}</span>
-        </div>
-      </header>
+      <Header propertyName={config.branding.propertyName} />
 
-      <main className="mx-auto max-w-[960px] px-4 py-6 space-y-8">
-        {/* Feature components arrive in PR-2 */}
-        <p className="text-sand/60 text-sm text-center py-20">
-          {config.branding.propertyName} — Sprint 1 guest experience loading…
-        </p>
+      <main className="mx-auto max-w-[960px] px-4 py-6 space-y-6">
+        {/* CHR-03: QuietHoursBanner */}
+        {/* CHR-07: ConciergeSearch */}
+        {/* CHR-05: ExperienceGrid */}
+        {/* CHR-06: HouseManual */}
       </main>
 
-      <footer className="py-6 text-center">
-        <span className="text-xs text-sand/40">Powered by Charteris</span>
-      </footer>
+      <Footer />
     </div>
   );
 }
