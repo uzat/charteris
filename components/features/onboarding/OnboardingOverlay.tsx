@@ -1,11 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import type { BookingType } from '../../../lib/types/property';
-import {
-  getStoredBookingType,
-  setStoredBookingType,
-} from '../../../lib/utils/sessionStorage';
+import { setStoredBookingType } from '../../../lib/utils/sessionStorage';
 
 const BOOKING_OPTIONS: { type: BookingType; label: string; emoji: string }[] = [
   { type: 'family', label: 'Family', emoji: '👨‍👩‍👧‍👦' },
@@ -22,10 +19,6 @@ interface OnboardingOverlayProps {
 
 export default function OnboardingOverlay({ onComplete }: OnboardingOverlayProps) {
   const [selected, setSelected] = useState<BookingType | null>(null);
-
-  function handleSelect(type: BookingType) {
-    setSelected(type);
-  }
 
   function handleConfirm() {
     const type = selected ?? 'general';
@@ -59,7 +52,7 @@ export default function OnboardingOverlay({ onComplete }: OnboardingOverlayProps
             return (
               <button
                 key={type}
-                onClick={() => handleSelect(type)}
+                onClick={() => setSelected(type)}
                 className="flex min-h-[56px] items-center gap-3 rounded-lg border px-4 py-3 text-left text-sm font-medium transition-colors"
                 style={{
                   borderColor: '#C9A96E',

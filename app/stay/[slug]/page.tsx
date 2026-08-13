@@ -6,6 +6,7 @@ import QuietHoursBanner from '../../../components/features/quiet-hours/QuietHour
 import GuestSessionProvider from '../../../components/features/onboarding/GuestSessionProvider';
 import ExperienceGrid from '../../../components/features/experiences/ExperienceGrid';
 import HouseManual from '../../../components/features/house-manual/HouseManual';
+import ConciergeSearch from '../../../components/features/concierge/ConciergeSearch';
 
 interface PageProps {
   params: { slug: string };
@@ -24,7 +25,10 @@ export default function StayPage({ params }: PageProps) {
         {(bookingType) => (
           <main className="mx-auto max-w-[960px] px-4 py-6 space-y-6">
             <QuietHoursBanner config={config.quietHours} />
-            {/* CHR-07: ConciergeSearch */}
+            <ConciergeSearch
+              bookingType={bookingType}
+              propertyName={config.branding.propertyName}
+            />
             <ExperienceGrid
               experiences={config.experiences}
               bookingType={bookingType}
