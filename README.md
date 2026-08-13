@@ -14,23 +14,30 @@ Short-stay property managers spend significant time on repetitive guest queries 
 
 ## Stack
 - **Frontend:** Next.js 14 (App Router), TypeScript, Tailwind CSS
+- **Testing:** Vitest + React Testing Library (unit/component), Playwright (E2E, iPad viewport)
 - **Database:** Supabase (Sprint 2)
 - **AI Concierge:** Claude API — RAG over house manual content (Sprint 2)
 - **SMS:** Twilio — automated quiet hour, bin night, and checkout reminders with opt-out (Sprint 2)
 - **Payments:** Stripe Subscriptions — $69 AUD/month per property (Sprint 3)
-- **Deployment:** Vercel
+- **Deployment:** Vercel — atomic zero-downtime deployments, instant rollback, preview URLs per PR
 
 ## Running Locally
 ```bash
 cp .env.local.example .env.local
 npm install
-npm run dev
-# http://localhost:3000
+npm run dev           # http://localhost:3000
+npm test              # unit + component tests
+npm run test:coverage # with coverage report
+npm run test:e2e      # Playwright e2e (requires running dev server)
+npm run type-check    # TypeScript strict check
 ```
 
-## Current Sprint — Sprint 1: Guest UI Shell
+## Deployment
+Every PR creates a Vercel preview deployment. Merging to main deploys to production atomically — no downtime. Rollback via Vercel dashboard in under 60 seconds.
 
-Building a fully interactive guest experience demo, deployable to Vercel and demonstrable on iPad. All data is static this sprint — no backend, no AI API, no Twilio.
+## Current Sprint — Sprint 1: Guest UI Shell + Foundation
+
+Building a fully interactive guest experience demo, deployable to Vercel and demonstrable on iPad. All data is static this sprint. CI/CD pipeline and full test coverage established from day one.
 
 | Issue | Story | Points |
 | :--- | :--- | :---: |
@@ -41,7 +48,10 @@ Building a fully interactive guest experience demo, deployable to Vercel and dem
 | [#5](https://github.com/uzat/charteris/issues/5) | CHR-05: Curated Experience Grid | 5 |
 | [#6](https://github.com/uzat/charteris/issues/6) | CHR-06: House Manual Collapsible Panels | 2 |
 | [#7](https://github.com/uzat/charteris/issues/7) | CHR-07: AI Concierge Search Bar (UI Only) | 3 |
-| | **Total** | **20** |
+| [#21](https://github.com/uzat/charteris/issues/21) | CHR-21: CI/CD Pipeline — GitHub Actions + Vercel | 3 |
+| [#22](https://github.com/uzat/charteris/issues/22) | CHR-22: Testing Infrastructure — Vitest + Playwright | 3 |
+| [#23](https://github.com/uzat/charteris/issues/23) | CHR-23: Sprint 1 Test Suite — Unit, Component & E2E | 5 |
+| | **Total** | **31** |
 
 ## Sprint 2 Backlog — Live Data, AI & Notifications
 
@@ -53,7 +63,8 @@ Building a fully interactive guest experience demo, deployable to Vercel and dem
 | [#11](https://github.com/uzat/charteris/issues/11) | CHR-11: Guest Notification Preferences & SMS Opt-Out | 3 |
 | [#12](https://github.com/uzat/charteris/issues/12) | CHR-12: Twilio SMS Automation — Quiet Hours, Bin Night, Checkout | 5 |
 | [#13](https://github.com/uzat/charteris/issues/13) | CHR-13: In-App Transient Notification Banners | 2 |
-| | **Total** | **23** |
+| [#24](https://github.com/uzat/charteris/issues/24) | CHR-24: Staging Environment & Expand/Contract Migrations | 3 |
+| | **Total** | **26** |
 
 ## Sprint 3 Backlog — Agency Admin, Integrations & Billing
 
@@ -73,8 +84,9 @@ Building a fully interactive guest experience demo, deployable to Vercel and dem
 - Property owner self-serve portal
 - Stripe Connect for automated owner cashback payouts
 - Load testing and caching layer
-- Multi-region expansion (beyond Mornington Peninsula)
+- Multi-region expansion beyond Mornington Peninsula
 
-## Reference
+## Documentation
 - [Use Cases by User Type](docs/use-cases.md)
-- [Roadmap](roadmap.md)
+- [Roadmap](docs/roadmap.md)
+- [Master Rollout Checklist](docs/checklist.md)
