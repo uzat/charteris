@@ -58,11 +58,11 @@ Every PR creates a Vercel preview deployment. Merge to main deploys atomically �
 | Issue | Story | Points | Status |
 | :--- | :--- | :---: | :--- |
 | [#8](https://github.com/uzat/charteris/issues/8) | CHR-08: Supabase Schema & Property Config API | 5 | ✓ Done |
-| [#9](https://github.com/uzat/charteris/issues/9) | CHR-09: Multi-Property Support via URL Slug | 3 | In progress |
+| [#9](https://github.com/uzat/charteris/issues/9) | CHR-09: Multi-Property Support via URL Slug | 3 | ✓ Done |
 | [#10](https://github.com/uzat/charteris/issues/10) | CHR-10: Claude API RAG Concierge | 5 |
 | [#11](https://github.com/uzat/charteris/issues/11) | CHR-11: Guest Notification Preferences & SMS Opt-Out | 3 |
 | [#12](https://github.com/uzat/charteris/issues/12) | CHR-12: Twilio SMS Automation | 5 |
-| [#13](https://github.com/uzat/charteris/issues/13) | CHR-13: In-App Transient Banners | 2 |
+| [#45](https://github.com/uzat/charteris/issues/45) | CHR-13: In-App Transient Banners | 2 | In progress |
 | [#24](https://github.com/uzat/charteris/issues/24) | CHR-24: Staging Environment & Migrations | 3 |
 | [#25](https://github.com/uzat/charteris/issues/25) | CHR-25: Pre-Arrival Access Link | 3 |
 | [#26](https://github.com/uzat/charteris/issues/26) | CHR-26: Local Concierge — Destination Knowledge | 5 |
