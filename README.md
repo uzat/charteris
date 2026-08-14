@@ -37,7 +37,7 @@ npm run type-check    # TypeScript strict check
 ## Deployment
 Every PR creates a Vercel preview deployment. Merge to main deploys atomically — zero downtime. Rollback via Vercel dashboard in under 60 seconds.
 
-## Current Sprint — Sprint 1: Guest UI Shell + Foundation
+## Sprint 1 — Guest UI Shell + Foundation ✓ COMPLETE
 
 | Issue | Story | Points |
 | :--- | :--- | :---: |
@@ -53,12 +53,12 @@ Every PR creates a Vercel preview deployment. Merge to main deploys atomically �
 | [#23](https://github.com/uzat/charteris/issues/23) | CHR-23: Sprint 1 Test Suite | 5 |
 | | **Total** | **31** |
 
-## Sprint 2 Backlog — Live Data, AI, Notifications & Itinerary
+## Current Sprint — Sprint 2: Live Data, AI, Notifications & Itinerary
 
-| Issue | Story | Points |
-| :--- | :--- | :---: |
-| [#8](https://github.com/uzat/charteris/issues/8) | CHR-08: Supabase Schema | 5 |
-| [#9](https://github.com/uzat/charteris/issues/9) | CHR-09: Multi-Property URL Slug | 3 |
+| Issue | Story | Points | Status |
+| :--- | :--- | :---: | :--- |
+| [#8](https://github.com/uzat/charteris/issues/8) | CHR-08: Supabase Schema & Property Config API | 5 | ✓ Done |
+| [#9](https://github.com/uzat/charteris/issues/9) | CHR-09: Multi-Property Support via URL Slug | 3 | In progress |
 | [#10](https://github.com/uzat/charteris/issues/10) | CHR-10: Claude API RAG Concierge | 5 |
 | [#11](https://github.com/uzat/charteris/issues/11) | CHR-11: Guest Notification Preferences & SMS Opt-Out | 3 |
 | [#12](https://github.com/uzat/charteris/issues/12) | CHR-12: Twilio SMS Automation | 5 |
