@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getPropertyConfig } from '../../../lib/config/demo-property';
+import { getPropertyConfig } from '../../../lib/data/getPropertyConfig';
 import { parseBookingType } from '../../../lib/utils/bookingType';
 import Header from '../../../components/layout/Header';
 import Footer from '../../../components/layout/Footer';
@@ -10,8 +10,8 @@ interface PageProps {
   searchParams: { group?: string | string[] };
 }
 
-export default function StayPage({ params, searchParams }: PageProps) {
-  const config = getPropertyConfig(params.slug);
+export default async function StayPage({ params, searchParams }: PageProps) {
+  const config = await getPropertyConfig(params.slug);
   if (!config) notFound();
 
   const bookingType = parseBookingType(searchParams.group);
