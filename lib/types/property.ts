@@ -66,4 +66,6 @@ export interface PropertyConfig {
   houseManual: HouseManualSection[];
   hostName: string;
   hostPhone: string;
+  checkoutTime?: { hour: number; minute: number };
+  binNight?: { day: number; type: string };
 }
