@@ -11,7 +11,35 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'lcov'],
-      // Coverage thresholds enforced from PR-3 once component tests cover the app/ layer
+      exclude: [
+        // Next.js and build infrastructure
+        'next.config.mjs',
+        'next-env.d.ts',
+        'postcss.config.mjs',
+        'tailwind.config.ts',
+        'playwright.config.ts',
+        'vitest.config.ts',
+        'vitest.setup.ts',
+        // Next.js route shells and root layout — covered by E2E
+        'app/layout.tsx',
+        'app/page.tsx',
+        'app/stay/**',
+        // Type definitions only
+        'lib/types/**',
+        // Static demo data
+        'lib/config/demo-property.ts',
+        // Default excludes
+        'node_modules/**',
+        '.next/**',
+        'e2e/**',
+        '__tests__/**',
+      ],
+      thresholds: {
+        lines: 80,
+        functions: 80,
+        branches: 80,
+        statements: 80,
+      },
     },
   },
   resolve: {
