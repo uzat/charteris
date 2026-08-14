@@ -29,9 +29,11 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'npm run dev',
+    // CI: build runs before E2E in the workflow, so use `next start` (faster, deterministic).
+    // Local: use dev server so changes are reflected without a full build.
+    command: process.env.CI ? 'npm run start' : 'npm run dev',
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
-    timeout: 60_000,
+    timeout: 120_000,
   },
 });

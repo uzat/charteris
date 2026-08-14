@@ -25,7 +25,8 @@ test.describe('Quiet hours banner', () => {
     await page.addInitScript(mockTime('2024-01-15T12:30:00Z'));
     await page.goto('/stay/sorrento-ridge?group=family');
     await expect(page.getByText('Active Now')).toBeVisible();
-    await expect(page.getByRole('alert')).toBeVisible();
+    // Filter by text to avoid matching Next.js's built-in route announcer (also role="alert")
+    await expect(page.getByRole('alert').filter({ hasText: 'Active Now' })).toBeVisible();
   });
 
   test('shows upcoming message 30 minutes before quiet hours — 21:30 AEDT', async ({ page }) => {
@@ -40,7 +41,8 @@ test.describe('Quiet hours banner', () => {
     // 14:00 AEDT = 03:00 UTC
     await page.addInitScript(mockTime('2024-01-15T03:00:00Z'));
     await page.goto('/stay/sorrento-ridge?group=family');
-    await expect(page.getByRole('alert')).toHaveCount(0);
+    // Filter by text to avoid matching Next.js's built-in route announcer (also role="alert")
+    await expect(page.getByRole('alert').filter({ hasText: 'Active Now' })).toHaveCount(0);
     await expect(page.getByRole('status')).toHaveCount(0);
   });
 });
