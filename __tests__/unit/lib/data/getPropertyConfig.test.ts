@@ -156,12 +156,22 @@ describe('getPropertyConfig', () => {
     expect(result?.binNight).toEqual({ day: 2, type: 'general waste' });
   });
 
-  it('throws when SUPABASE_SERVICE_ROLE_KEY is missing', async () => {
+  it('falls back to demo fixture when Supabase env vars are absent', async () => {
+    delete process.env.NEXT_PUBLIC_SUPABASE_URL;
     delete process.env.SUPABASE_SERVICE_ROLE_KEY;
     vi.resetModules();
     const mod = await import('../../../../lib/data/getPropertyConfig');
-    await expect(mod.getPropertyConfig('sorrento-ridge')).rejects.toThrow(
-      /SUPABASE_SERVICE_ROLE_KEY/
-    );
+    const result = await mod.getPropertyConfig('sorrento-ridge');
+    expect(result).not.toBeNull();
+    expect(result?.slug).toBe('sorrento-ridge');
+  });
+
+  it('returns null from demo fixture for unknown slug when Supabase env vars are absent', async () => {
+    delete process.env.NEXT_PUBLIC_SUPABASE_URL;
+    delete process.env.SUPABASE_SERVICE_ROLE_KEY;
+    vi.resetModules();
+    const mod = await import('../../../../lib/data/getPropertyConfig');
+    const result = await mod.getPropertyConfig('nonexistent');
+    expect(result).toBeNull();
   });
 });

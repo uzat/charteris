@@ -1,7 +1,12 @@
 import type { PropertyConfig, Experience, HouseManualSection } from '../types/property';
+import { getPropertyConfig as getDemoConfig } from '../config/demo-property';
 import { createServiceClient } from '../supabase/server';
 
 export async function getPropertyConfig(slug: string): Promise<PropertyConfig | null> {
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    return getDemoConfig(slug);
+  }
+
   const supabase = createServiceClient();
 
   const { data: property } = await supabase
